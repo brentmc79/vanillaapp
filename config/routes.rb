@@ -2,6 +2,8 @@ Vanilla::Application.routes.draw do
 
   root :to => 'sessions#new'
 
+  match '/login' => 'sessions#new', :as => 'login'
+
   match '/auth/twitter/callback' => 'sessions#create'
   match '/auth/failure' => 'sessions#failure'
 

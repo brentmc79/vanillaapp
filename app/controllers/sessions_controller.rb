@@ -5,7 +5,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    render :text => "<pre>"+request.env["omniauth.auth"].to_yaml+"</pre>"
+    auth = request.env["omniauth.auth"]
+    user = User.where(:uid => auth['uid'].to_s).first || User.create_from_auth_hash(auth)
+    session[:user_id] = user.id
+    render :text => "<h1>You're logged in!</h1><pre>"+user.to_yaml+"</pre>"
   end
 
   def failure
