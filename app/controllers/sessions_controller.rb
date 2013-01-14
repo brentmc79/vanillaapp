@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    render :text => "Authenticate with: <ul style='font-size: 20pt;'><li style='margin: 15px;'><a href='/auth/twitter'>Login via Twitter</a></li></ul>", :layout => true
+    render :text => "<a class=\"btn btn-info\" href='/auth/twitter'>Login via Twitter</a>", :layout => true
   end
 
   def create
