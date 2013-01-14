@@ -1,4 +1,10 @@
 Vanilla::Application.routes.draw do
+
+  root :to => 'sessions#new'
+
+  match '/auth/twitter/callback' => 'sessions#create'
+  match '/auth/failure' => 'sessions#failure'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
