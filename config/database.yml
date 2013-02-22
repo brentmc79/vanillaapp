@@ -15,7 +15,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: vanilla_development
+  database: tasker_development
   pool: 5
   username: bcollier
   password:
@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: vanilla_test
+  database: tasker_test
   pool: 5
   username: bcollier
   password:
@@ -49,7 +49,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: vanilla_production
+  database: tasker_production
   pool: 5
   username: bcollier
   password:
