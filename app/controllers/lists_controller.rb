@@ -27,7 +27,7 @@ class ListsController < ApplicationController
   # GET /lists/new
   # GET /lists/new.json
   def new
-    @list = current_user.list.new
+    @list = current_user.lists.new
 
     respond_to do |format|
       format.html # new.html.erb
