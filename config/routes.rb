@@ -1,5 +1,8 @@
 Tasker::Application.routes.draw do
 
+  get "mocks/home"
+  get "mocks/edit"
+
   root :to => 'sessions#new'
 
   match '/login' => 'sessions#new', :as => 'login'

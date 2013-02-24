@@ -1,0 +1,66 @@
+.tasklist {
+  list-style: none;
+  margin-left: 0;
+}
+.tasklist li {
+  border: 1px solid #ddd;
+  margin-bottom: -1px;
+  padding: 5px 5px 5px 10px;
+}
+.tasklist li:first-child {
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  background: #ddd;
+}
+.tasklist li:first-child input[type="text"] {
+  width: 96%;
+  margin-bottom: 0;
+}
+.tasklist li input[type="checkbox"] {
+  margin-right: 10px;
+}
+.tasklist li:last-child {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.tasklist li label {
+  margin-bottom: 0;
+}
+.tasklist li .content {
+  margin-left: 20px;
+}
+.tasklist li .content hr {
+  margin: 5px 5px 5px 0;
+}
+.tasklist li .content .notes {
+  color: #aaa;
+  font-size: 12px;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+}
+.tasklist li .content .notes p:last-child {
+  margin-bottom: 0;
+}
+.tasklist li.edit {
+  border-radius: 4px;
+  margin: 10px 5px 10px 0;
+  box-shadow: 5px 5px 5px #aaa;
+}
+.tasklist li.edit input[type="text"], .tasklist li.edit textarea {
+  margin-bottom: 0;
+  width: 96%;
+}
+.tasklist li.edit textarea {
+  resize: vertical;
+}
+.tasklist li.edit .buttons {
+  text-align: right;
+  margin-top: 5px;
+}
+.tasklist li .actions {
+  opacity: .5;
+  display: none;
+}
+.tasklist li:hover .actions {
+  display: block;
+}
