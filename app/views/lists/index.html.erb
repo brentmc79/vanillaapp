@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="span2"></div>
+  <div class="span2">
+    <ul class="nav nav-pills nav-stacked">
+      <% @lists.each_with_index do |list, index| %>
+        <% if index == 0 %>
+          <li class="active"><%= link_to list.name, list %></li>
+        <% else %>
+          <li><%= link_to list.name, list %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span5">
+    <div class="tab-content">
+      <ul class="tasklist">
+        <li>
+          <input type="text" placeholder="What do you have to do?">
+        </li>
+        <li>
+          <input type="checkbox" class="pull-left">
+          <div class="content">
+            <div class="actions pull-right">
+              <i class="icon-pencil"></i>
+              <i class="icon-move"></i>
+            </div>
+            <span>two</span>
+            <div class="notes">
+              <hr>
+              <p>These are some notes.</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <input type="checkbox" class="pull-left">
+          <div class="content">
+            <div class="actions pull-right">
+              <i class="icon-pencil"></i>
+              <i class="icon-move"></i>
+            </div>
+            <span>three</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="span3"></div>
+</div>
+<%= link_to 'New List', new_list_path %>

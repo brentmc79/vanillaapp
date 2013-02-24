@@ -1,9 +1,11 @@
 Tasker::Application.routes.draw do
 
+  resources :lists
+
   get "mocks/home"
   get "mocks/edit"
 
-  root :to => 'sessions#new'
+  root :to => 'lists#index'
 
   match '/login' => 'sessions#new', :as => 'login'
 
