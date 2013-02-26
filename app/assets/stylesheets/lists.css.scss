@@ -64,3 +64,21 @@
 .tasklist li:hover .actions {
   display: block;
 }
+li#new_list {
+  background: #ddd;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+li#new_list icon {
+  margin: 10px 0 0;
+  opacity: .5;
+  width: 12px;
+  cursor: pointer;
+}
+li#new_list form {
+  margin-bottom: 0;
+}
+li#new_list input[type="text"] {
+  width: 79%;
+  margin-bottom: 0;
+}

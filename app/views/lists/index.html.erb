@@ -9,41 +9,44 @@
           <li><%= link_to list.name, list %></li>
         <% end %>
       <% end %>
+      <li id="new_list" class="hidden">
+        <icon data-rel="new_list" class="icon-remove-circle pull-right"></icon>
+        <%= form_for List.new do |f| %>
+          <%= f.text_field :name, :placeholder => "New list name" %>
+        <% end %>
+      </li>
     </ul>
   </div>
   <div class="span5">
-    <div class="tab-content">
-      <ul class="tasklist">
-        <li>
-          <input type="text" placeholder="What do you have to do?">
-        </li>
-        <li>
-          <input type="checkbox" class="pull-left">
-          <div class="content">
-            <div class="actions pull-right">
-              <i class="icon-pencil"></i>
-              <i class="icon-move"></i>
-            </div>
-            <span>two</span>
-            <div class="notes">
-              <hr>
-              <p>These are some notes.</p>
-            </div>
+    <ul class="tasklist">
+      <li>
+        <input type="text" placeholder="What do you have to do?">
+      </li>
+      <li>
+        <input type="checkbox" class="pull-left">
+        <div class="content">
+          <div class="actions pull-right">
+            <i class="icon-pencil"></i>
+            <i class="icon-move"></i>
           </div>
-        </li>
-        <li>
-          <input type="checkbox" class="pull-left">
-          <div class="content">
-            <div class="actions pull-right">
-              <i class="icon-pencil"></i>
-              <i class="icon-move"></i>
-            </div>
-            <span>three</span>
+          <span>two</span>
+          <div class="notes">
+            <hr>
+            <p>These are some notes.</p>
           </div>
-        </li>
-      </ul>
-    </div>
+        </div>
+      </li>
+      <li>
+        <input type="checkbox" class="pull-left">
+        <div class="content">
+          <div class="actions pull-right">
+            <i class="icon-pencil"></i>
+            <i class="icon-move"></i>
+          </div>
+          <span>three</span>
+        </div>
+      </li>
+    </ul>
   </div>
   <div class="span3"></div>
 </div>
-<%= link_to 'New List', new_list_path %>
