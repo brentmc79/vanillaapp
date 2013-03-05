@@ -2,17 +2,52 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
+# Event Triggers
 $(".new_list").on "click", (e) ->
   $("body").trigger "new_list"
   e.preventDefault()
+
+$("li.task").on "click", ".content", (e) ->
+  $(this).trigger("toggle_notes")
+  e.preventDefault()
+
+$("li.task").on "click", "i.icon-pencil, button.cancel", (e) ->
+  $(this).closest("li.task").trigger("task_edit")
+  e.preventDefault()
+  e.stopPropagation()
+
+$("form.edit_task").on "click", "button.task-save", (e) ->
+  $(this).closest("form.edit_task").trigger("task_save")
+
+
+# Event Handlers
+$("body").on "new_task", (e) ->
+  $("#new_task input[type='text']").first().focus()
 
 $("body").on "new_list", (e) ->
   new_list = $("#new_list")
   if !new_list.is(":visible")
     $('#new_list').toggleClass "hidden"
-  $("#new_list input").first().focus()
+  $("#new_list input[type='text']").first().focus()
   e.preventDefault()
+
+$("li.task").on "toggle_notes", (e) ->
+  if ($(this).find(".notes div").text().length > 0)
+    $(this).toggleClass("collapsed")
+
+$("li.task").on "task_edit", (e) ->
+  $(this).toggleClass("edit")
+  input = $(this).find("input.focus")
+  input.focus()
+  input.val(input.val())
 
 $("body").on "click", ".icon-remove-circle", (e) ->
   $("#"+$(this).data("rel")).addClass("hidden")
   e.preventDefault()
+
+$("form.edit_task").on "task_save", (e) ->
+  $(this).submit()
+
+$(document).ready ->
+  $("body").trigger("new_task")

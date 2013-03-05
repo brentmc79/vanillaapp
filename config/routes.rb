@@ -1,6 +1,8 @@
 Tasker::Application.routes.draw do
 
-  resources :lists
+  resources :lists do
+    resources :tasks
+  end
 
   get "mocks/home"
   get "mocks/edit"

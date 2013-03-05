@@ -29,8 +29,11 @@
 .tasklist li .content {
   margin-left: 20px;
 }
-.tasklist li .content hr {
+.tasklist li hr {
   margin: 5px 5px 5px 0;
+}
+.tasklist li.collapsed .notes {
+  display: none;
 }
 .tasklist li .content .notes {
   color: #aaa;
@@ -40,6 +43,19 @@
 }
 .tasklist li .content .notes p:last-child {
   margin-bottom: 0;
+}
+.tasklist li form.edit_task {
+  display: none;
+  margin-bottom: 0;
+}
+.tasklist li.edit input[type="checkbox"] {
+  display: none;
+}
+.tasklist li.edit form.edit_task {
+  display: block;
+}
+.tasklist li.edit .content {
+  display:none;
 }
 .tasklist li.edit {
   border-radius: 4px;
@@ -75,7 +91,7 @@ li#new_list icon {
   width: 12px;
   cursor: pointer;
 }
-li#new_list form {
+li#new_list form, li#new_task form {
   margin-bottom: 0;
 }
 li#new_list input[type="text"] {

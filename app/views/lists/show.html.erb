@@ -1,20 +1,57 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @list.name %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @list.user_id %>
-</p>
-
-<p>
-  <b>Order:</b>
-  <%= @list.order %>
-</p>
-
-
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+<div class="row">
+  <div class="span2"></div>
+  <div class="span2">
+    <ul class="nav nav-pills nav-stacked">
+      <% current_user.lists.each_with_index do |list, index| %>
+        <% if @list == list %>
+          <li class="active"><%= link_to list.name, list %></li>
+        <% else %>
+          <li><%= link_to list.name, list %></li>
+        <% end %>
+      <% end %>
+      <li id="new_list" class="hidden">
+        <icon data-rel="new_list" class="icon-remove-circle pull-right"></icon>
+        <%= form_for List.new do |f| %>
+          <%= f.text_field :name, :placeholder => "New list name" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="span5">
+    <ul class="tasklist">
+      <li id="new_task">
+        <%= form_for [@list, Task.new] do |f| %>
+          <%= f.text_field :description, :placeholder => "What do you have to do?" %>
+        <% end %>
+      </li>
+      <% @list.tasks.ordered.each do |task| %>
+        <li id="task_<%= task.id %>" class="task collapsed">
+          <input type="checkbox" class="pull-left">
+          <%= form_for [@list, task] do |f| %>
+            <%= f.text_field :description, :class => "focus" %>
+            <div class="">
+              <hr>
+              <%= f.text_area :notes, :cols => "", :rows => "" %>
+            </div>
+            <div class="buttons">
+              <button class="btn btn-mini cancel" type="button">Cancel</button>
+              <button class="btn-primary btn btn-mini task-save" type="button">Save</button>
+            </div>
+          <% end %>
+          <div class="content">
+            <div class="actions pull-right">
+              <i class="icon-pencil"></i>
+              <i class="icon-move"></i>
+            </div>
+            <span><%= task.description %></span>
+            <div class="notes">
+              <hr>
+              <div><%= task.notes %></div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span3"></div>
+</div>

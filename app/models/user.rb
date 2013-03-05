@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :image_url, :name, :screen_name, :uid
 
   has_many :lists
+  has_many :tasks, :through => :lists
 
   def self.create_from_auth_hash(auth)
     create! do |user|

@@ -6,6 +6,7 @@ class ListsController < ApplicationController
   # GET /lists.json
   def index
     @lists = current_user.lists.all
+    @list = @lists.first
 
     respond_to do |format|
       format.html # index.html.erb
