@@ -1,0 +1,15 @@
+<ul class="nav nav-pills nav-stacked">
+  <% current_user.lists.each_with_index do |list, index| %>
+    <% if @list == list %>
+      <li class="active"><%= link_to list.name, list %></li>
+    <% else %>
+      <li><%= link_to list.name, list %></li>
+    <% end %>
+  <% end %>
+  <li id="new_list" class="hidden">
+    <icon data-rel="new_list" class="icon-remove-circle pull-right"></icon>
+    <%= form_for List.new do |f| %>
+      <%= f.text_field :name, :placeholder => "New list name" %>
+    <% end %>
+  </li>
+</ul>

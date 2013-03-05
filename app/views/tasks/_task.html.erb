@@ -1,0 +1,30 @@
+<li id="task_<%= task.id %>" class="task collapsed">
+  <% if task.complete? %>
+    <icon class="icon-check pull-left"></icon>
+  <% else %>
+    <input type="checkbox" class="checkbox pull-left" rel="edit_task_<%= task.id %>" <%= task.complete? ? "checked=\"checked\"" : "" %>>
+  <% end %>
+  <%= form_for [@list, task] do |f| %>
+    <%= f.check_box :complete, :class => "hidden_checkbox hidden" %>
+    <%= f.text_field :description, :class => "focus" %>
+    <div class="">
+      <hr>
+      <%= f.text_area :notes, :cols => "", :rows => "" %>
+    </div>
+    <div class="buttons">
+      <button class="btn btn-mini cancel" type="button">Cancel</button>
+      <button class="btn-primary btn btn-mini task-save" type="button">Save</button>
+    </div>
+  <% end %>
+  <div class="content">
+    <div class="actions pull-right">
+      <i class="icon-pencil"></i>
+      <i class="icon-move"></i>
+    </div>
+    <span><%= task.description %></span>
+    <div class="notes">
+      <hr>
+      <div><%= task.notes %></div>
+    </div>
+  </div>
+</li>

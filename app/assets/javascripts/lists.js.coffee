@@ -17,8 +17,16 @@ $("li.task").on "click", "i.icon-pencil, button.cancel", (e) ->
   e.preventDefault()
   e.stopPropagation()
 
+$("input.checkbox").on "click", (e) ->
+  $(this).closest("li.task").trigger("complete")
+
 $("form.edit_task").on "click", "button.task-save", (e) ->
   $(this).closest("form.edit_task").trigger("task_save")
+
+$("form.edit_task input, form.edit_task textarea").bind "keydown", "esc", (e) ->
+  $(this).closest("li.task").trigger("task_edit")
+  $("body").trigger "new_task"
+
 
 
 # Event Handlers
@@ -41,6 +49,11 @@ $("li.task").on "task_edit", (e) ->
   input = $(this).find("input.focus")
   input.focus()
   input.val(input.val())
+
+$("li.task").on "complete", (e) ->
+  checked = $(this).find("input.checkbox").prop("checked")
+  $(this).find("input.hidden_checkbox").prop("checked", checked)
+  $(this).find("form.edit_task").trigger("task_save")
 
 $("body").on "click", ".icon-remove-circle", (e) ->
   $("#"+$(this).data("rel")).addClass("hidden")
