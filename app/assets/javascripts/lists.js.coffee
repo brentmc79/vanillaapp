@@ -2,6 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+# Functions
+saveOrder = (event, ui) ->
+  orderings = $("li.task").map (index, task) ->
+    {
+      id: $(task).data("id"),
+      position: index
+    }
+    [[$(task).data("id"), index]]
+  .get()
+  console.log orderings
 
 # Event Triggers
 $(".new_list").on "click", (e) ->
@@ -64,3 +74,10 @@ $("form.edit_task").on "task_save", (e) ->
 
 $(document).ready ->
   $("body").trigger("new_task")
+  $("ul.tasklist").sortable({
+    items: "li.task",
+    handle: ".icon-move",
+    axis: "y",
+    cursor: "move",
+    update: saveOrder
+  })

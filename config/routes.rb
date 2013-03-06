@@ -2,6 +2,7 @@ Tasker::Application.routes.draw do
 
   resources :lists do
     resources :tasks
+    resources :orderings, :only => [:create]
   end
 
   get "mocks/home"

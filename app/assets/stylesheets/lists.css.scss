@@ -6,6 +6,7 @@
   border: 1px solid #ddd;
   margin-bottom: -1px;
   padding: 5px 5px 5px 10px;
+  background: #fff;
 }
 .tasklist li:first-child {
   border-top-right-radius: 4px;
@@ -15,6 +16,9 @@
 .tasklist li:first-child input[type="text"] {
   width: 96%;
   margin-bottom: 0;
+}
+.tasklist li.task {
+  background: #fff;
 }
 .tasklist li input[type="checkbox"] {
   margin-right: 10px;
