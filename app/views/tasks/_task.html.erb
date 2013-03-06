@@ -12,13 +12,16 @@
       <%= f.text_area :notes, :cols => "", :rows => "" %>
     </div>
     <div class="buttons">
+      <a href="" class="delete">Delete</a>
       <button class="btn btn-mini cancel" type="button">Cancel</button>
       <button class="btn-primary btn btn-mini task-save" type="button">Save</button>
     </div>
   <% end %>
   <div class="content">
     <div class="actions pull-right">
-      <i class="icon-pencil"></i>
+      <% unless task.complete? %>
+        <i class="icon-pencil"></i>
+      <% end %>
       <i class="icon-move"></i>
     </div>
     <span><%= task.description %></span>

@@ -79,6 +79,16 @@
   text-align: right;
   margin-top: 5px;
 }
+.tasklist li.edit .buttons .delete {
+  float: left;
+  color: #DDD;
+  font-size: 12px;
+  text-decoration: underline;
+}
+.tasklist li.edit .buttons .delete:hover {
+  opacity: 0.6;
+  color: red;
+}
 .tasklist li .actions {
   opacity: .5;
   display: none;
