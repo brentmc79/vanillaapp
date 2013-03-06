@@ -12,7 +12,7 @@
       <%= f.text_area :notes, :cols => "", :rows => "" %>
     </div>
     <div class="buttons">
-      <a href="" class="delete">Delete</a>
+      <%= link_to 'Destroy', [@list, task], :class => "delete", :method => :delete, :data => { confirm: 'Are you sure?' } %>
       <button class="btn btn-mini cancel" type="button">Cancel</button>
       <button class="btn-primary btn btn-mini task-save" type="button">Save</button>
     </div>
