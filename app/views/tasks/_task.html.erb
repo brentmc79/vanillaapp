@@ -1,4 +1,4 @@
-<li id="task_<%= task.id %>" data-id="<%= task.id %>" class="task collapsed">
+<li id="task_<%= task.id %>" data-id="<%= task.id %>" data-rel="<%= url_for([task.list, task]) %>" class="task collapsed">
   <% if task.complete? %>
     <icon class="icon-check pull-left"></icon>
   <% else %>

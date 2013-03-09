@@ -4,14 +4,18 @@
 
 # Functions
 saveOrder = (event, ui) ->
-  orderings = $("li.task").map (index, task) ->
-    {
-      id: $(task).data("id"),
-      position: index
-    }
-    [[$(task).data("id"), index]]
-  .get()
-  console.log orderings
+  url = ui.item.data("rel")
+  position = ui.item.index()
+  console.log ("url => "+url)
+  console.log ("position => "+ui.item.index().toString())
+  $.ajax({
+    url: url,
+    type: 'PUT',
+    data: { task: { position: position } },
+    dataType: "json",
+    success: (data, status, xhr) ->
+      console.log status
+  })
 
 # Event Triggers
 $(".new_list").on "click", (e) ->
